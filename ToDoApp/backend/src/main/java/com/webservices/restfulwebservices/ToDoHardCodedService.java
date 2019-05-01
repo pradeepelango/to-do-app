@@ -29,8 +29,19 @@ public class ToDoHardCodedService {
 		toDoList.remove(todo);
 		return todo;
 	}
+	
+	public ToDo save(ToDo todo) {
+		if(todo.getId()==-1 || todo.getId()==0) {
+			todo.setId(++idCounter);
+			toDoList.add(todo);
+		} else {
+			deleteById(todo.getId());
+			toDoList.add(todo);
+		}
+		return todo;
+	}
 
-	private ToDo findById(long id) {
+	public ToDo findById(long id) {
 		for (ToDo todo : toDoList) {
 			if (todo.getId() == id) {
 				return todo;

@@ -4,6 +4,21 @@ import java.util.Date;
 
 public class ToDo {
 	
+	private long id;
+	private String username;
+	private String description;
+	private Date targetDate;
+	private boolean isDone;
+	
+	public ToDo(long id, String username, String description, Date targetDate, boolean isDone) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.description = description;
+		this.targetDate = targetDate;
+		this.isDone = isDone;
+	}
+	
 	public ToDo() {
 		
 	}
@@ -70,19 +85,6 @@ public class ToDo {
 		this.isDone = isDone;
 	}
 
-	private long id;
-	private String username;
-	private String description;
-	private Date targetDate;
-	private boolean isDone;
 	
-	public ToDo(long id, String username, String description, Date targetDate, boolean isDone) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.description = description;
-		this.targetDate = targetDate;
-		this.isDone = isDone;
-	}
 
 }

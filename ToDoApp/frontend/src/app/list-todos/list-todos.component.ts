@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ToDoDataService } from "../service/data/to-do-data.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-list-todos",
@@ -18,28 +19,43 @@ export class ListTodosComponent implements OnInit {
   // };
   toDosFromService: Todo[];
   name = "pradeep";
-  deleteMessage : string 
+  deleteMessage: string;
+  updateMessage: string;
 
-  constructor(private toDoDataService: ToDoDataService) {}
+  constructor(
+    private toDoDataService: ToDoDataService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getToDosFromService();
   }
 
   getToDosFromService() {
-    this.toDoDataService.executeToDoDataService(this.name).subscribe(response => {
-      console.log(response);
-      this.toDosFromService = response;
-    });
+    this.toDoDataService
+      .executeToDoDataService(this.name)
+      .subscribe(response => {
+        console.log(response);
+        this.toDosFromService = response;
+      });
   }
 
-  deleteToDoFromService(id:number){
-    this.toDoDataService.deleteToDoDataService('pradeep',id).subscribe(
-      response => {console.log(response);
-      this.deleteMessage = `Delete of ${id} successful!`;
-      this.getToDosFromService();
-      }
-    )
+  deleteToDoFromService(id: number) {
+    this.toDoDataService
+      .deleteToDoDataService("pradeep", id)
+      .subscribe(response => {
+        console.log(response);
+        this.deleteMessage = `Delete of ${id} successful!`;
+        this.getToDosFromService();
+      });
+  }
+
+  updateToDo(id: number){
+    this.router.navigate(['todos',id])
+  }
+
+  addToDo(){
+    this.router.navigate(['todos',-1])
   }
 
 }

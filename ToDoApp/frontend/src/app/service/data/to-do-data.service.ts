@@ -17,4 +17,16 @@ export class ToDoDataService {
     return this.http.delete<Todo>(`http://localhost:8080/users/${user}/todos/${id}`)
   }
 
+  updateToDoDataService(user:string, id: number, todo: Todo){
+    return this.http.put<Todo>(`http://localhost:8080/users/${user}/todos/${id}`, todo)
+  }
+
+  getToDoDataService(user:string, id:number){
+    return this.http.get<Todo>(`http://localhost:8080/users/${user}/todos/${id}`)
+  }
+
+  addToDoDataService(user:string, todo: Todo){
+    return this.http.post<Todo>(`http://localhost:8080/users/${user}/todos`, todo)
+  }
+
 }
