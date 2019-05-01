@@ -33,7 +33,7 @@ export class ListTodosComponent implements OnInit {
 
   getToDosFromService() {
     this.toDoDataService
-      .executeToDoDataService(this.name)
+      .retrieveAllToDos(this.name)
       .subscribe(response => {
         console.log(response);
         this.toDosFromService = response;
