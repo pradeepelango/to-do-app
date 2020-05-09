@@ -31,7 +31,7 @@ HELP.md
 
 .DS_STORE
 
-/dist/
+/dist/**
 /bazel-out
 /integration/bazel/bazel-*
 *.log
